@@ -1,0 +1,91 @@
+
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hp.aqm.agents</groupId>
+        <artifactId>aqm-agent-parent</artifactId>
+        <version>1.0.0-9999-SNAPSHOT</version>
+        <relativePath>pom.xml</relativePath>
+    </parent>
+    <groupId>com.hp.aqm.agents</groupId>
+    <artifactId>automation</artifactId>
+
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>3.7.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <classifier>resources</classifier>
+            <version>3.7.5</version>
+            <type>zip</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbehave.site</groupId>
+            <artifactId>jbehave-site-resources</artifactId>
+            <version>3.1.1</version>
+            <type>zip</type>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>aqm-agent</id>
+            <properties>
+                <aqm.agent.extensions>Selenium,JBehave,CucumberJVM,JUnit,TestNG</aqm.agent.extensions>
+                <aqm.agent.default.classification>Integration</aqm.agent.default.classification>
+                <aqm.agent.build.server.name>demo</aqm.agent.build.server.name>
+                <aqm.agent.build.type.sid>Virtual-Store</aqm.agent.build.type.sid>
+                <aqm.agent.build.sid>${env.ROOT_BUILD_NUMBER}</aqm.agent.build.sid>
+                <aqm.agent.server.url>http://16.60.157.149:7151/ali-dev-bridge</aqm.agent.server.url>
+                <aqm.agent.auth.key>G8XaCxdBstMlJvSA5cfS/2yX2XC0J1aRmyrFNHmg2zg=</aqm.agent.auth.key>
+            </properties>
+            <build>
+                <plugins>
+                <!-- Disable Surefire -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.4.3</version>
+                        <configuration>
+                        <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                <!-- AQM Smart Test Execution -->
+                    <plugin>
+                        <groupId>com.hp.aqm.agents</groupId>
+                        <artifactId>aqm-maven-test-agent</artifactId>
+                        <version>1.0.0-9999-SNAPSHOT</version>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <skipTests>false</skipTests>
+                                    <argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
+                                    <includes>
+                                        <include>**/**/JBehaveMusicStore.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
+
+
