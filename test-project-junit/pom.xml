@@ -23,7 +23,7 @@
         <dependency>
             <groupId>com.hp.aqm.agents</groupId>
             <artifactId>aqm-agent-annotations</artifactId>
-            <version>1.0.0-9999-SNAPSHOT</version>
+            <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -57,7 +57,7 @@
                         <plugin>
                             <groupId>com.hp.aqm.agents</groupId>
                             <artifactId>aqm-maven-test-agent</artifactId>
-                            <version>1.0.0-9999-SNAPSHOT</version>
+                             <version>1.0.1</version>
                             <executions>
                                 <execution>
                                     <phase>test</phase>
