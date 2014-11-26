@@ -6,7 +6,6 @@
         <groupId>com.hp.aqm.agents</groupId>
         <artifactId>aqm-agent-parent</artifactId>
         <version>1.0.0-9999-SNAPSHOT</version>
-        <relativePath>pom.xml</relativePath>
     </parent>
     <groupId>com.hp.aqm.agents</groupId>
     <artifactId>automation</artifactId>
