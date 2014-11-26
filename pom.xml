@@ -83,36 +83,6 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>agm-snapshots</id>
-            <url>http://mydtbld0051.isr.hp.com:8081/nexus/content/repositories/agm-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>agm-snapshots</id>
-            <url>http://mydtbld0051.isr.hp.com:8081/nexus/content/repositories/agm-snapshots</url>
-            <name>agm-snapshots</name>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>plugins</id>
-            <url>http://mydtbld0051.isr.hp.com:8081/nexus/content/groups/plugins</url>
-            <releases><enabled>true</enabled></releases>
-            <!-- we shouldn't allow downloading snapshots from public repositories -->
-            <snapshots><enabled>true</enabled></snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <profiles>
         <profile>
             <id>sonar-dev</id>
